@@ -1,4 +1,4 @@
-// Copyright (c) 2010 The Chromium OS Authors. All rights reserved.
+// Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -526,7 +526,9 @@ bool DeltaDiffGenerator::ReadFileToDiff(
       operation.set_type(DeltaArchiveManifest_InstallOperation_Type_MOVE);
       current_best_size = 0;
       data.clear();
-    } else {
+    } else if (!EndsWith(new_filename,  // See crosbug.com/15308.
+                         "/opt/google/chrome/pepper/libWVDecryptDecode.so",
+                         true)) {
       // Try bsdiff of old to new data
       vector<char> bsdiff_delta;
       TEST_AND_RETURN_FALSE(
