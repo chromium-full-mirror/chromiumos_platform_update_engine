@@ -35,7 +35,7 @@ class LibcurlHttpFetcher : public HttpFetcher {
         bytes_downloaded_(0),
         resume_offset_(0),
         retry_count_(0),
-        retry_seconds_(60),
+        retry_seconds_(20),
         no_network_retry_count_(0),
         no_network_max_retries_(0),
         idle_seconds_(1),
