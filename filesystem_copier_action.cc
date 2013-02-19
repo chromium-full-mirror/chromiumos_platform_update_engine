@@ -210,6 +210,7 @@ void FilesystemCopierAction::AsyncWriteReadyCallback(GObject *source_object,
                                                        res,
                                                        &error);
 
+  bytes_written = 0;
   if (bytes_written < static_cast<ssize_t>(buffer_valid_size_[index])) {
     if (bytes_written < 0) {
       LOG(ERROR) << "Write error: " << utils::GetAndFreeGError(&error);
